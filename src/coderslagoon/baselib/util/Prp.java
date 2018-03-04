@@ -219,9 +219,7 @@ public class Prp {
             Iterator<Class<? extends Item<?>>> i = itemClasses();
             while (i.hasNext()) {
                 Class<? extends Item<?>> itemClass = i.next();
-
-                Item<?> item = itemClass.newInstance();
-
+                Item<?> item = itemClass.getDeclaredConstructor().newInstance();
                 if (!itr.onItem(item)) {
                     return false;
                 }
