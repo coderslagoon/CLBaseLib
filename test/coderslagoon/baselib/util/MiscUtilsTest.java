@@ -6,7 +6,11 @@ import java.security.SecureRandom;
 import java.text.DecimalFormatSymbols;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.Random;
+
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import coderslagoon.baselib.util.MiscUtils;
@@ -19,6 +23,20 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.fail;
 
 public class MiscUtilsTest {
+
+    Locale defaultLocale;
+
+    @Before
+    public void setup() {
+        this.defaultLocale = Locale.getDefault();
+        Locale.setDefault(new Locale("en", "US"));
+    }
+
+    @After
+    public void teardown() {
+        Locale.setDefault(this.defaultLocale);
+    }
+
     @Test
     public void testFillString() {
         assertTrue(""    .equals(MiscUtils.fillString(0, '\0')));
