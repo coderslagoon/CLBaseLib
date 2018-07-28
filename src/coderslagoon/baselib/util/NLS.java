@@ -1,7 +1,9 @@
 package coderslagoon.baselib.util;
 
+import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -114,12 +116,16 @@ public abstract class NLS {
         }
         return null;
     }
-
+    
     static void loadNLS(Class<? extends NLS> clz, String id) throws BaseLibException {
+        loadNLS(clz, id, "UTF-8");
+    }
+
+    static void loadNLS(Class<? extends NLS> clz, String id, String encoding) throws BaseLibException {
         try {
             String res = "NLS_" + id + ".properties";
             Properties p = new Properties();
-            p.load(clz.getResourceAsStream(res));
+            p.load(new InputStreamReader(clz.getResourceAsStream(res), Charset.forName(encoding)));
             Map<String, Field> nfmap = new HashMap<>();
             for (Field f : clz.getDeclaredFields()) {
                 String n = strName(f);

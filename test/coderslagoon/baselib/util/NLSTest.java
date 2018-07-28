@@ -41,7 +41,7 @@ public class NLSTest {
             assertTrue (nreg.removeListener(l));
             assertFalse(nreg.removeListener(l));
             assertEquals(TestNLS.ANOTHER_RES           , "nochmal eine");
-            assertEquals(TestNLS.HELLO                 , "hallo");
+            assertEquals(TestNLS.HELLO                 , "hallÖ");
             assertEquals(TestNLS.FORMAT_THIS_1.fmt("1"), "bitte 1X formatieren");
             nreg.load("en");
             assertTrue(lc.v == 1);
