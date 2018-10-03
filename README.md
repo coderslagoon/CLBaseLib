@@ -1,4 +1,4 @@
 CLBaseLib
 =========
 
-Base library for some [coderslagoon](https://github.com/coderslagoon) Java projects.
+Base library for some coderslagoon (https://coderslagoon.com) Java projects.
